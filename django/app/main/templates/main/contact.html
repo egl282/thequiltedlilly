@@ -1,6 +1,4 @@
-<?php
- $db = mysqli_connect('127.0.0.1','root','','test') or die('Error connecting to MySQL server.');
-?>
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +14,10 @@
     <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
+    <link href="{% static 'main/css/starter-template.css' %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -42,13 +37,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">The Quilted Lilly</a>
+          <a class="navbar-brand" href="{% url 'main:index' %}">The Quilted Lilly</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{% url 'main:index' %}">Home</a></li>
+            <li><a href="{% url 'main:about' %}">About</a></li>
+            <li class="active"><a href="{% url 'main:contact' %}">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,23 +52,8 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Welcome to The Quilted Lilly</h1>
-        <p class="lead">Here are a few examples of previous quilts I have made.<br> If you like what you see feel free to contact me to place an order!</p>
-        <p>
-        <?php
-          $query = "SELECT * FROM test_table";
-          mysqli_query($db, $query) or die('Error querying database.');
-
-          $result = mysqli_query($db, $query);
-
-          while ($row = mysqli_fetch_array($result)) {
-            //echo $row['name'];
-          }
-        ?>
-        </p>
-        <img src="images/quilt1.jpg" alt="Quilt1" width="304" height="236"> 
-        <img src="images/quilt2.jpg" alt="Quilt2" width="304" height="236"> 
-        <img src="images/quilt3.jpg" alt="Quilt3" width="304" height="236"> 
+        <h1>Contact Information</h1>
+        <p class="lead">Email: not@real.com<br> Phone: 111-111-1111</p>
       </div>
 
     </div><!-- /.container -->
@@ -83,13 +63,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'main/js/vendor/jquery.min.js' %}"><\/script>')</script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
   </body>
 </html>
-
-<?php
-  mysqli_close($db);
-?>
