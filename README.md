@@ -1,2 +1,2 @@
 # thequiltedlilly
-docker run -tid --name httpd-test -v /Users/ethanlilly/Documents/workspace/thequiltedlilly/src:/usr/local/apache2/htdocs -p 8888:80 httpd
+docker run -tid -p 8000:8000 --name thequiltedlilly -v /Users/ethanlilly/Documents/workspace/thequiltedlilly/app:/usr/src/app django:2.0
