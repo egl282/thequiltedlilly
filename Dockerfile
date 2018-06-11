@@ -1,6 +1,6 @@
 FROM python:3.6.4
 
-VOLUME /usr/src/app
+COPY app /usr/src/app
 WORKDIR /usr/src/app
 RUN pip install django
 
